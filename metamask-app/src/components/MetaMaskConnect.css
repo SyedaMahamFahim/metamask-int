@@ -1,0 +1,191 @@
+.metamask-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px;
+}
+
+.metamask-card {
+  background: white;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 500px;
+  width: 100%;
+  transition: transform 0.3s ease;
+}
+
+.metamask-card:hover {
+  transform: translateY(-5px);
+}
+
+.metamask-card h2 {
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.metamask-card h3 {
+  color: #555;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.metamask-card p {
+  color: #666;
+  margin-bottom: 25px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.connect-button {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 20px rgba(240, 147, 251, 0.3);
+}
+
+.connect-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px rgba(240, 147, 251, 0.4);
+}
+
+.connect-button:active {
+  transform: translateY(0);
+}
+
+.install-button {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  color: white;
+  text-decoration: none;
+  padding: 15px 30px;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  display: inline-block;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 20px rgba(79, 172, 254, 0.3);
+}
+
+.install-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px rgba(79, 172, 254, 0.4);
+}
+
+.account-section {
+  text-align: left;
+}
+
+.account-info {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  border-left: 4px solid #667eea;
+}
+
+.account-address {
+  background: #e9ecef;
+  padding: 10px 15px;
+  border-radius: 10px;
+  font-family: 'Courier New', monospace;
+  font-weight: 600;
+  color: #495057;
+  margin: 10px 0;
+  word-break: break-all;
+}
+
+.network-info {
+  color: #6c757d;
+  font-size: 0.9rem;
+  margin: 10px 0;
+}
+
+.account-actions {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.copy-button {
+  background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+  color: #333;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(168, 237, 234, 0.3);
+}
+
+.copy-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(168, 237, 234, 0.4);
+}
+
+.disconnect-button {
+  background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+  color: #333;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(255, 154, 158, 0.3);
+}
+
+.disconnect-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 154, 158, 0.4);
+}
+
+.error-message {
+  background: #ffe6e6;
+  color: #d63384;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  border-left: 4px solid #d63384;
+  font-weight: 500;
+}
+
+.connect-section {
+  margin-top: 20px;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  .metamask-card {
+    padding: 30px 20px;
+    margin: 10px;
+  }
+  
+  .metamask-card h2 {
+    font-size: 1.5rem;
+  }
+  
+  .account-actions {
+    flex-direction: column;
+  }
+  
+  .copy-button,
+  .disconnect-button {
+    width: 100%;
+  }
+} 
