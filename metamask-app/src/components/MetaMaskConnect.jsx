@@ -27,10 +27,38 @@ const MetaMaskConnect = () => {
       });
 
       if (accounts.length > 0) {
-        setAccount(accounts[0]);
+        const walletAddress = accounts[0];
+        setAccount(walletAddress);
         setIsConnected(true);
         localStorage.setItem('metamask-connected', 'true');
-        getNetworkName(); // Get network name when connecting
+        
+        // Get network name
+        const network = await getNetworkName();
+        
+        // Save wallet address to database via API
+        try {
+          const response = await fetch('http://localhost:5000/api/wallet/connect', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              address: walletAddress,
+              network: network
+            })
+          });
+
+          const data = await response.json();
+          
+          if (data.success) {
+            console.log('✅ Wallet saved to database:', data.message);
+          } else {
+            console.error('❌ Failed to save wallet to database:', data.error);
+          }
+        } catch (apiError) {
+          console.error('❌ API Error:', apiError);
+          // Don't show API error to user, just log it
+        }
       }
     } catch (error) {
       console.error('Error connecting to MetaMask:', error);
@@ -104,11 +132,39 @@ const MetaMaskConnect = () => {
     if (wasConnected && isMetaMaskInstalled()) {
       // Try to get the current account
       window.ethereum.request({ method: 'eth_accounts' })
-        .then(accounts => {
+        .then(async (accounts) => {
           if (accounts.length > 0) {
-            setAccount(accounts[0]);
+            const walletAddress = accounts[0];
+            setAccount(walletAddress);
             setIsConnected(true);
-            getNetworkName(); // Get network name when connecting
+            
+            // Get network name
+            const network = await getNetworkName();
+            
+            // Save wallet address to database via API
+            try {
+              const response = await fetch('http://localhost:5000/api/wallet/connect', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                  address: walletAddress,
+                  network: network
+                })
+              });
+
+              const data = await response.json();
+              
+              if (data.success) {
+                console.log('✅ Wallet reconnected and saved to database:', data.message);
+              } else {
+                console.error('❌ Failed to save wallet to database:', data.error);
+              }
+            } catch (apiError) {
+              console.error('❌ API Error:', apiError);
+              // Don't show API error to user, just log it
+            }
           }
         })
         .catch(console.error);
